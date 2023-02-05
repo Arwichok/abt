@@ -4,11 +4,12 @@ import pathlib
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
+from ..util.service import Service
 from . import route
 
 
 @dataclass
-class WebService:
+class WebService(Service):
     app: FastAPI = field(init=False)
     
     def __post_init__(self):
@@ -21,4 +22,4 @@ class WebService:
             ), 
             name="static"
         )
-        self.app.include_router(route.rt)
+        self.app.include_router(route.Route(self).rt)

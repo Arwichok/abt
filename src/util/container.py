@@ -11,10 +11,14 @@ class Container:
     web: WebService = field(default_factory=WebService)
     
     def __post_init__(self):
-        self.setup_services()
+        self.tg.ct = self
+        self.web.ct = self
+        # self.setup_services()
+        # self.tg.setup_webhook()
 
     def setup_services(self):
         for obj in fields(self):
             if isinstance(obj, Service):
                 getattr(self, obj.name).ct = self
+                print(obj.name)
 
