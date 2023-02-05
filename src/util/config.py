@@ -34,3 +34,5 @@ if DEV:
         f.writelines(sorted([f"{k}=\n" for k in env.dump()]))
 else:
     logging.basicConfig(level=logging.WARNING)
+
+logging.warning("INIT")
