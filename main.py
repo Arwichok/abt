@@ -1,4 +1,3 @@
 from src.util.container import Container
 
-
-app = Container().app
+app = Container().web.app

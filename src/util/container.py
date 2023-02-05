@@ -1,19 +1,20 @@
-from dataclasses import dataclass, field
-from typing import Dict
-from aiogram import Bot, Dispatcher
+from dataclasses import dataclass, field, fields
 
-from fastapi import FastAPI
-
-from ..tg.factory import create_dp, create_bot
-from ..web.app import create_app
-from . import config
+from .service import Service
+from ..tg.service import TelegramService
+from ..web.service import WebService
 
 
 @dataclass
 class Container:
-    app: FastAPI = field(default_factory=create_app)
-    dp: Dispatcher = field(default_factory=create_dp)
-    bots: Dict[str, Bot] = field(default_factory=dict)
-
+    tg: TelegramService = field(default_factory=TelegramService)
+    web: WebService = field(default_factory=WebService)
+    
     def __post_init__(self):
-        ...
+        self.setup_services()
+
+    def setup_services(self):
+        for obj in fields(self):
+            if isinstance(obj, Service):
+                getattr(self, obj.name).ct = self
+

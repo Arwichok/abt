@@ -5,7 +5,7 @@
     "env": [
         {
             "key": "TELEGRAM_BOT_TOKEN",
-            "description": "Token to telegram bot from t.me/botfather",
+            "description": "Token to telegram bot from https://t.me/botfather",
             "required": true
         },
         {
