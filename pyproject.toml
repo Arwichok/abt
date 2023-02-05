@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "abt"
+version = "0.0.0"
+description = "Aiogram Bot Template"
+authors = ["Arwichok <me@arwi.dev>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.89.1"
+alembic = "^1.9.2"
+SQLAlchemy = "^2.0.0"
+uvicorn = "^0.20.0"
+aiogram = "3.0.0b6"
+environs = "^9.5.0"
+python-multipart = "^0.0.5"
+
+[tool.poetry.dev-dependencies]
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
